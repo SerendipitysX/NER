@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/A-show/client" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/A-web/vueml" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/bert" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/data3/model_hub/bert" vcs="Git" />
+  </component>
+</project>

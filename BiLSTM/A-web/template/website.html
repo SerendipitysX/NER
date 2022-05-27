@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <!-- Load vue.js and axois.js -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    </head>
+    <body>
+        <!-- The APP UI -->
+        <div id="app" class="container">
+            <div>
+              <textarea id="inputSentence" type="text" method="POST">
+                HELLO
+              </textarea>
+            </div>
+            <button id="predict" type="button" class="btn btn-primary ">
+              Predict
+            </button>
+            <h2 class="element" style="font-size: 2rem">{{prediction}}</h2>
+      </div>
+
+        <script>
+            var app = new Vue({
+                el: "#app",
+                data() {
+                    return {
+                        input_sentence: null,
+                        prediction: null,
+                    };
+                },
+            });
+
+            <!-- Calling the predict API when the form is submitted -->
+            document.getElementById("inputSentence").addEventListener("submit", (e) => {
+                axios
+                    .post("/predict", new FormData(document.getElementById("imageForm")), {
+                        headers: {
+                            "Content-Type": "multipart/form-data",
+                        },
+                    })
+                    .then((response) => (app.prediction = response.data));
+
+                e.preventDefault();
+            });
+
+            <!-- Display the selected image -->
+            document.getElementById("imageFile").addEventListener("change", (e) => {
+                const [sentence] = document.getElementById("inputSentence").textContent;
+                if (sentence) {
+                    app.input_sentence = sentence
+                }
+            });
+        </script>
+    </body>
+</html>
